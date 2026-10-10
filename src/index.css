@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+@layer base {
+  :root,
+  [data-theme="gold"] {
+    --accent: #F5E6A8;
+    --accent-soft: rgba(245, 230, 168, 0.12);
+    --accent-glow: rgba(245, 230, 168, 0.35);
+    --border-shine: #E8D48B;
+    --surface-0: #000000;
+    --surface-1: #0a0a0a;
+    --surface-2: #121212;
+    --surface-3: #1a1a1a;
+  }
+
+  [data-theme="emerald"] {
+    --accent: #34D399;
+    --accent-soft: rgba(52, 211, 153, 0.12);
+    --accent-glow: rgba(52, 211, 153, 0.35);
+    --border-shine: #10B981;
+  }
+
+  [data-theme="violet"] {
+    --accent: #A78BFA;
+    --accent-soft: rgba(167, 139, 250, 0.12);
+    --accent-glow: rgba(167, 139, 250, 0.35);
+    --border-shine: #8B5CF6;
+  }
+
+  [data-theme="cyan"] {
+    --accent: #38BDF8;
+    --accent-soft: rgba(56, 189, 248, 0.12);
+    --accent-glow: rgba(56, 189, 248, 0.35);
+    --border-shine: #0EA5E9;
+  }
+
+  [data-theme="rose"] {
+    --accent: #FB7185;
+    --accent-soft: rgba(251, 113, 133, 0.12);
+    --accent-glow: rgba(251, 113, 133, 0.35);
+    --border-shine: #F43F5E;
+  }
+
+  [data-theme="orange"] {
+    --accent: #FB923C;
+    --accent-soft: rgba(251, 146, 60, 0.12);
+    --accent-glow: rgba(251, 146, 60, 0.35);
+    --border-shine: #F97316;
+  }
+
+  [data-theme="blue"] {
+    --accent: #60A5FA;
+    --accent-soft: rgba(96, 165, 250, 0.12);
+    --accent-glow: rgba(96, 165, 250, 0.35);
+    --border-shine: #3B82F6;
+  }
+
+  [data-theme="lime"] {
+    --accent: #A3E635;
+    --accent-soft: rgba(163, 230, 53, 0.12);
+    --accent-glow: rgba(163, 230, 53, 0.35);
+    --border-shine: #84CC16;
+  }
+
+  [data-theme="pink"] {
+    --accent: #F472B6;
+    --accent-soft: rgba(244, 114, 182, 0.12);
+    --accent-glow: rgba(244, 114, 182, 0.35);
+    --border-shine: #EC4899;
+  }
+
+  [data-theme="silver"] {
+    --accent: #E2E8F0;
+    --accent-soft: rgba(226, 232, 240, 0.12);
+    --accent-glow: rgba(226, 232, 240, 0.35);
+    --border-shine: #CBD5E1;
+  }
+
+  body {
+    background-color: #000000;
+    color: #f3f3f1;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  ::selection {
+    background-color: var(--accent-soft);
+    color: var(--accent);
+  }
+}
+
+.font-serif-doc {
+  font-family: 'Newsreader', Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+.font-display {
+  font-family: 'Cinzel', serif;
+}
+
+/* Dynamic theme classes */
+.text-accent {
+  color: var(--accent);
+}
+
+.bg-accent-soft {
+  background-color: var(--accent-soft);
+}
+
+.border-accent {
+  border-color: var(--accent);
+}
+
+.border-accent-soft {
+  border-color: var(--accent-soft);
+}
+
+/* Shine sweep border animation using dynamic CSS variables */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.shine-box {
+  position: relative;
+  background: #0a0a0a;
+  border-radius: 0.75rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shine-box:hover {
+  background-color: rgba(245, 230, 168, 0.035);
+  box-shadow: 0 0 20px -5px var(--accent-glow);
+}
+
+.shine-box-active {
+  background-color: rgba(245, 230, 168, 0.04);
+  box-shadow: 0 0 24px -4px var(--accent-glow);
+}
+
+.shine-btn-accent,
+.shine-btn-gold {
+  position: relative;
+  background: linear-gradient(135deg, var(--accent-soft) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 20px -5px var(--accent-glow);
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shine-btn-accent:hover,
+.shine-btn-gold:hover {
+  border-color: var(--border-shine);
+  box-shadow: 0 0 30px -2px var(--accent-glow);
+  background: linear-gradient(135deg, var(--accent-soft) 0%, rgba(255, 255, 255, 0.06) 100%);
+  transform: translateY(-1px);
+}
+
+.shine-btn-accent:active,
+.shine-btn-gold:active {
+  transform: translateY(0);
+}
+
+/* Accessible reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .shine-box::before {
+    animation: none !important;
+    background: var(--accent-soft) !important;
+  }
+  .shine-btn-accent,
+  .shine-btn-gold {
+    transition: none !important;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+  opacity: 0.6;
+}

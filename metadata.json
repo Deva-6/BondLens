@@ -1,0 +1,6 @@
+{
+  "name": "BondLens",
+  "description": "Understand every clause before you sign. Analyze legal or business documents to extract risks, deadlines, obligations and key clauses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
