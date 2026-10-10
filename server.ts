@@ -123,7 +123,7 @@ ${textToAnalyze}
 Execute complete BondLens analysis. Output pure JSON matching the requested structure.`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-3.8-flash',
       contents: userPrompt,
       config: {
         systemInstruction: ANALYSIS_SYSTEM_PROMPT,
@@ -278,7 +278,7 @@ Respond in strict JSON:
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
         const response = await ai.models.generateContent({
-          model: 'gemini-2.0-flash',
+          model: 'gemini-3.8-flash',
           contents: userPrompt,
           config: {
             systemInstruction: ASSISTANT_SYSTEM_PROMPT,
